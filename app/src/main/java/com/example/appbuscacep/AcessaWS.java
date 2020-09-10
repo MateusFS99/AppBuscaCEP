@@ -18,6 +18,8 @@ public class AcessaWS {
             HttpURLConnection conexao;
             InputStream is;
 
+            //borja
+
             conexao = (HttpURLConnection) url.openConnection();
             conexao.setRequestMethod("GET");
             conexao.setReadTimeout(15000);
