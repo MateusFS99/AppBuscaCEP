@@ -46,6 +46,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:background="#85C3CF"
+        android:onClick="sendMessage"
         android:padding="10dp"
         android:text="Busca CEP"
         android:textSize="36sp"

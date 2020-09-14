@@ -2,8 +2,10 @@ package com.example.appbuscacep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView btBuscaCep;
     private EditText etCidade, etComp;
     private Spinner spEstado;
+    public static final String EXTRA_MESSAGE = "com.example.appbuscacep.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +32,15 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.estados, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spEstado.setAdapter(adapter);
-
-        btBuscaCep.setOnClickListener(e->{acessaApi();});
     }
 
-    private void acessaApi() {
+    public void sendMessage(View view) {
 
+        Intent intent = new Intent(this, DisplayMessageActivity.class);
         String cidade = etCidade.getText().toString(), estado = spEstado.getSelectedItem().toString(), comp = etComp.getText().toString();
-        AcessaWsTask task = new AcessaWsTask();
+        String junta = cidade + " " + estado + " " + comp;
 
-        try {
-
-            String json = task.execute("https://viacep.com.br/ws/" + estado + "/" + cidade + "/" + comp + "/json/").get();
-        } catch (Exception e) {
-            Log.e("Erro na conexão!",e.toString());
-        }
+        intent.putExtra(EXTRA_MESSAGE, junta);
+        startActivity(intent);
     }
 }
