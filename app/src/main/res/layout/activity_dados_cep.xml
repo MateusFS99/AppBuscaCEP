@@ -2,14 +2,104 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
     tools:context=".DadosCep">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Ceplb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="CEP:  " />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/datacep"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/cidlb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cidade:  " />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/datacid"
+        android:layout_width="371dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/rualb"
+        android:layout_width="41dp"
+        android:layout_height="wrap_content"
+        android:text="Rua:" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/datarua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/rualb2"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="UF:" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/datauf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/dddlb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DDD:" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/dataddd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/bairrolb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bairro:" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/databai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
+    <TextView
+        android:id="@+id/complb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complemento:" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/datacomp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="MultiAutoCompleteTextView" />
+
 </LinearLayout>

@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
-    public static final String CEP = "com.example.myfirstapp.MESSAGE";
+    public static final String CEP = "com.example.appbuscacep.MESSAGE";
     JSONArray jarray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
