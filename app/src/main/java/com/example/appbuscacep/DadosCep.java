@@ -9,13 +9,15 @@ import android.widget.EditText;
 public class DadosCep extends AppCompatActivity {
 
     private EditText datacep, datacid, datauf, datarua, dataddd, databai, datacomp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_cep);
 
         Intent intent = getIntent();
-        String cep = intent.getStringExtra(DisplayMessageActivity.CEP);
+        String cep = intent.getStringExtra(DisplayMessageActivity.EXTRA_MESSAGE);
 
         datacep = findViewById(R.id.datacep);
         datacid = findViewById(R.id.datacid);
