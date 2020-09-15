@@ -4,16 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
+    public static final String CEP = "com.example.myfirstapp.MESSAGE";
+    JSONArray jarray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,18 +28,20 @@ public class DisplayMessageActivity extends AppCompatActivity {
         ListView lista = (ListView) findViewById(R.id.lista);
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        String cidade = message.split(" ")[0], estado = message.split(" ")[1], comp = message.split(" ")[2];
+        String cidade = message.split(";")[0], estado = message.split(";")[1], comp = message.split(";")[2];
         AcessaWsTask task = new AcessaWsTask();
 
         try {
 
-            List<String> list = null;
-            String json = task.execute("https://viacep.com.br/ws/" + estado + "/" + cidade + "/json/").get();
-            JSONObject jobj = new JSONObject(json);
-            JSONArray array = jobj.getJSONArray("GetCitiesResult");
 
-            for (int i = 0; i < array.length(); i++) {
-                list.add(array.getString(i));
+            String js = task.execute("https://viacep.com.br/ws/" + estado + "/" + cidade + "/"+ comp +"/json/").get();
+            jarray = new JSONArray(js);
+            JSONObject el;
+
+            List<String> list = new ArrayList<String>();;
+            for (int i = 0; i < jarray.length(); i++) {
+                el = new JSONObject(jarray.getString(i));
+                list.add(el.getString("cep"));
             }
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
 
@@ -43,4 +50,23 @@ public class DisplayMessageActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    public void onClick_List(View view) throws JSONException {
+        ListView lista = (ListView) findViewById(R.id.lista);
+        int index = lista.getSelectedItemPosition();
+        JSONObject job = new JSONObject(jarray.getString(index));
+        String aoba = job.getString("cep") +
+                "/" + job.getString("logradouro") +
+                "/" + job.getString("complemento") +
+                "/" + job.getString("bairro") +
+                "/" + job.getString("localidade") +
+                "/" + job.getString("uf") +
+                "/" + job.getString("ddd");
+
+        Intent intent = new Intent(this, DadosCep.class);
+        intent.putExtra(CEP, aoba);
+        startActivity(intent);
+
+    }
+
 }

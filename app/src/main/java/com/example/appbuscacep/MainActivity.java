@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         String cidade = etCidade.getText().toString(), estado = spEstado.getSelectedItem().toString(), comp = etComp.getText().toString();
-        String junta = cidade + " " + estado + " " + comp;
+        String junta = cidade + ";" + estado + ";" + comp;
 
         intent.putExtra(EXTRA_MESSAGE, junta);
         startActivity(intent);
