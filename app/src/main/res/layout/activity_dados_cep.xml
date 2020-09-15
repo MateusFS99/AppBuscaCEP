@@ -6,97 +6,109 @@
     android:layout_height="match_parent"
     android:background="#34ACBC"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".DadosCep">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CEP:  " />
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/datacep"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cidade:  " />
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/datacid"
-        android:layout_width="371dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
-
-    <TextView
-        android:layout_width="41dp"
-        android:layout_height="wrap_content"
-        android:text="Rua:" />
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/datarua"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:text="UF:" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/datauf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CEP:  " />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="DDD:" />
+            <MultiAutoCompleteTextView
+                android:id="@+id/datacep"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/dataddd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="UF:" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bairro:" />
+            <MultiAutoCompleteTextView
+                android:id="@+id/datauf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/databai"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cidade:  " />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Complemento:" />
+            <MultiAutoCompleteTextView
+                android:id="@+id/datacid"
+                android:layout_width="371dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/datacomp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:editable="false"
-        android:text="MultiAutoCompleteTextView" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bairro:" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/databai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
+
+            <TextView
+                android:layout_width="41dp"
+                android:layout_height="wrap_content"
+                android:text="Rua:" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/datarua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DDD:" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/dataddd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Complemento:" />
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/datacomp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:text="MultiAutoCompleteTextView" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

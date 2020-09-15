@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,5 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra(EXTRA_MESSAGE, junta);
         startActivity(intent);
+    }
+
+    public void onClick_cid(View view)
+    {
+        if(etCidade.getText().toString().equals("Cidade"))
+            etCidade.setText("");
+    }
+
+    public void onClick_comp(View view)
+    {
+        if(etComp.getText().toString().equals("Complemento"))
+            etComp.setText("");
     }
 }

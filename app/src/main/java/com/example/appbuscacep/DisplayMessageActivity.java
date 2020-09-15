@@ -32,7 +32,15 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        String cidade = message.split(";")[0], estado = message.split(";")[1], comp = message.split(";")[2];
+        String cidade = message.split(";")[0], estado = message.split(";")[1];
+        String comp = "";
+        try {
+            comp = message.split(";")[2];
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
         AcessaWsTask task = new AcessaWsTask();
 
         try {

@@ -16,11 +16,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="Cidade"
-        android:autofillHints="" />
+        android:onClick="onClick_cid"
+        android:text="Cidade" />
 
     <Spinner
         android:id="@+id/spEstado"
@@ -35,11 +36,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="Complemento"
-        android:autofillHints="" />
+        android:onClick="onClick_comp"
+        android:text="Complemento" />
 
     <TextView
         android:id="@+id/btBuscaCep"
