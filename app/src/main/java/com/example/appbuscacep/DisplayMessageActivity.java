@@ -51,22 +51,20 @@ public class DisplayMessageActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
 
             lista.setAdapter(adapter);
+            lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    onClick_List(i);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                onClick_List(view);
-            }
-        });
     }
 
-    public void onClick_List(View view) {
+    public void onClick_List(int index) {
 
-        int index = lista.getSelectedItemPosition();
         JSONObject job = null;
 
         try {
