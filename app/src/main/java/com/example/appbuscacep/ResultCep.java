@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisplayMessageActivity extends AppCompatActivity {
+public class ResultCep extends AppCompatActivity {
 
     private ListView lista;
     public static final String EXTRA_MESSAGE = "com.example.appbuscacep.MESSAGE";
@@ -26,7 +26,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_message);
+        setContentView(R.layout.activity_result_cep);
 
         lista = (ListView) findViewById(R.id.lista);
 

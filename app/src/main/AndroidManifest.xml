@@ -3,6 +3,8 @@
     package="com.example.appbuscacep">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DadosCep"></activity>
-        <activity android:name=".DisplayMessageActivity" />
+        <activity android:name=".Mapa" />
+        <activity android:name=".DadosCep" />
+        <activity android:name=".ResultCep" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDNpRfeGvEuED-nJXMIuhihmrsxusU_k30"/>
+
     </application>
 
 </manifest>

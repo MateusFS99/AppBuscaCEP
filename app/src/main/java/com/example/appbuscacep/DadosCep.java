@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class DadosCep extends AppCompatActivity {
 
     private EditText datacep, datacid, datauf, datarua, dataddd, databai, datacomp;
+    private Button btmapa;
+    public static final String EXTRA_MESSAGE = "com.example.appbuscacep.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +21,7 @@ public class DadosCep extends AppCompatActivity {
         setContentView(R.layout.activity_dados_cep);
 
         Intent intent = getIntent();
-        String cep = intent.getStringExtra(DisplayMessageActivity.EXTRA_MESSAGE);
+        String cep = intent.getStringExtra(ResultCep.EXTRA_MESSAGE);
 
         datacep = findViewById(R.id.datacep);
         datacid = findViewById(R.id.datacid);
@@ -26,6 +30,7 @@ public class DadosCep extends AppCompatActivity {
         dataddd = findViewById(R.id.dataddd);
         databai = findViewById(R.id.databai);
         datacomp = findViewById(R.id.datacomp);
+        btmapa = findViewById(R.id.btmapa);
 
         String [] aoba = cep.split("/");
 
@@ -36,5 +41,13 @@ public class DadosCep extends AppCompatActivity {
         datacid.setText(aoba[4]);
         datauf.setText(aoba[5]);
         dataddd.setText(aoba[6]);
+    }
+
+    public void sendMessage(View view) {
+
+        Intent intent = new Intent(this, Mapa.class);
+
+        intent.putExtra(EXTRA_MESSAGE, datacep.getText());
+        startActivity(intent);
     }
 }

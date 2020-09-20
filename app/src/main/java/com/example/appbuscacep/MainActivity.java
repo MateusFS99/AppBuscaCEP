@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -35,16 +33,6 @@ public class MainActivity extends AppCompatActivity {
         spEstado.setAdapter(adapter);
     }
 
-    public void sendMessage(View view) {
-
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        String cidade = etCidade.getText().toString(), estado = spEstado.getSelectedItem().toString(), comp = etComp.getText().toString();
-        String junta = cidade + ";" + estado + ";" + comp;
-
-        intent.putExtra(EXTRA_MESSAGE, junta);
-        startActivity(intent);
-    }
-
     public void onClick_cid(View view)
     {
         if(etCidade.getText().toString().equals("Cidade"))
@@ -55,5 +43,15 @@ public class MainActivity extends AppCompatActivity {
     {
         if(etComp.getText().toString().equals("Complemento"))
             etComp.setText("");
+    }
+
+    public void sendMessage(View view) {
+
+        Intent intent = new Intent(this, ResultCep.class);
+        String cidade = etCidade.getText().toString(), estado = spEstado.getSelectedItem().toString(), comp = etComp.getText().toString();
+        String junta = cidade + ";" + estado + ";" + comp;
+
+        intent.putExtra(EXTRA_MESSAGE, junta);
+        startActivity(intent);
     }
 }
