@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class AcessaWS {
+
     public static String consumir(String urlws) {
 
         String dados = "";
@@ -17,8 +18,6 @@ public class AcessaWS {
             int codigoResposta;
             HttpURLConnection conexao;
             InputStream is;
-
-            //borja
 
             conexao = (HttpURLConnection) url.openConnection();
             conexao.setRequestMethod("GET");

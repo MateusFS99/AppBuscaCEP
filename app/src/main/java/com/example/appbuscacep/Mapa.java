@@ -1,12 +1,8 @@
 package com.example.appbuscacep;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,8 +13,14 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
 public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
 
+    private Double lati, longi;
     private MapView mapview;
     private GoogleMap gmap;
     private MarkerOptions markerOptions = new MarkerOptions();
@@ -30,7 +32,21 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        AcessaWsTask task = new AcessaWsTask();
         Bundle mapViewBundle = null;
+
+        try {
+
+            String js = task.execute("http://maps.googleapis.com/maps/api/geocode/json?address=" + message).get();
+            JSONObject jobj = new JSONObject(js);
+
+            lati = jobj.getDouble("lat");
+            longi  = jobj.getDouble("lng");
+        } catch (ExecutionException | JSONException | InterruptedException e) {
+            e.printStackTrace();
+        }
 
         mapview.findViewById(R.id.mapView);
         mapview.setClickable(true);
@@ -49,8 +65,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         gmap.setMinZoomPreference(12);
         gmap.setIndoorEnabled(true);
 
-        UiSettings ponto =
-                gmap.getUiSettings();
+        UiSettings ponto = gmap.getUiSettings();
         ponto.setIndoorLevelPickerEnabled(true);
 
         ponto.setMyLocationButtonEnabled(true);
@@ -58,21 +73,11 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         ponto.setCompassEnabled(true);
         ponto.setZoomControlsEnabled(true);
 
-        //PONTO CENTRAL DA CIDADE
-        LatLng latLong = new LatLng(-22.1244244, -51.3860479);
-
-        //MARCADOR NO MAPA
+        LatLng latLong = new LatLng(lati, longi);
         markerOptions.position(latLong);
         gmap.addMarker(markerOptions);
 
-        //MARCADOR UNOESTE CAMPUS 1
-        latLong = new LatLng(-22.1332654, -51.4051404);
-        markerOptions.position(latLong);
-        gmap.addMarker(markerOptions);
-
-        gmap.moveCamera
-                (CameraUpdateFactory.newLatLng(latLong));
-
+        gmap.moveCamera(CameraUpdateFactory.newLatLng(latLong));
     }
 
     @Override
