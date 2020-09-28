@@ -10,70 +10,49 @@
     android:padding="20dp"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <EditText
+        android:id="@+id/etCidade"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:onClick="onClick_cid"
+        android:text="@string/cidade" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+    <Spinner
+        android:id="@+id/spEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
-            <EditText
-                android:id="@+id/etCidade"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:onClick="onClick_cid"
-                android:text="Cidade" />
+    <EditText
+        android:id="@+id/etCompl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:onClick="onClick_comp"
+        android:text="@string/complemento" />
 
-            <Spinner
-                android:id="@+id/spEstado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp" />
-
-            <EditText
-                android:id="@+id/etCompl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:autofillHints=""
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:onClick="onClick_comp"
-                android:text="Complemento" />
-
-            <TextView
-                android:id="@+id/btBuscaCep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="100dp"
-                android:background="#85C3CF"
-                android:onClick="sendMessage"
-                android:padding="10dp"
-                android:text="Busca CEP"
-                android:textSize="36sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btSair"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#EF9A9A"
-                android:onClick="onClick_close"
-                android:text="Sair"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView
+        android:id="@+id/btBuscaCep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
+        android:background="#85C3CF"
+        android:onClick="sendMessage"
+        android:padding="10dp"
+        android:text="@string/busca_cep"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

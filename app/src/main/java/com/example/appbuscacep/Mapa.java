@@ -73,7 +73,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback {
         ponto.setCompassEnabled(true);
         ponto.setZoomControlsEnabled(true);
 
-        LatLng latLong = new LatLng(lati, longi);
+        LatLng latLong = new LatLng(-21.9960461, -51.0303968);
         markerOptions.position(latLong);
         gmap.addMarker(markerOptions);
 

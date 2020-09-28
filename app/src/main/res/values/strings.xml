@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">AppBuscaCep</string>
+    <string name="cidade">Cidade</string>
+    <string name="complemento">Complemento</string>
+    <string name="busca_cep">Busca CEP</string>
+    <string name="cep">CEP:</string>
+    <string name="rua">Rua:</string>
+    <string name="bairro">Bairro:</string>
+    <string name="sair">Sair</string>
 
     <string-array name="estados">
         <item>AC</item>

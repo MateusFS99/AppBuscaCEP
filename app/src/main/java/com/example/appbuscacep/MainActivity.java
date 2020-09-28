@@ -1,12 +1,15 @@
 package com.example.appbuscacep;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView btBuscaCep;
     private EditText etCidade, etComp;
     private Spinner spEstado;
-    private Button btsair;
     public static final String EXTRA_MESSAGE = "com.example.appbuscacep.MESSAGE";
 
     @Override
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         etCidade = findViewById(R.id.etCidade);
         etComp = findViewById(R.id.etCompl);
         spEstado = findViewById(R.id.spEstado);
-        btsair = findViewById(R.id.btSair);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.estados, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -48,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
             etComp.setText("");
     }
 
-    public void onClick_close(View view) {
-
-        this.finishAffinity();
-    }
     public void sendMessage(View view) {
 
         Intent intent = new Intent(this, ResultCep.class);
@@ -60,5 +57,27 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra(EXTRA_MESSAGE, junta);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu1,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.imSair:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -19,7 +19,8 @@
                 android:id="@+id/lista"
                 android:layout_width="409dp"
                 android:layout_height="729dp"
-                android:background="#34ACBC" />
+                android:divider="#065464"
+                android:dividerHeight="10dp" />
         </LinearLayout>
     </ScrollView>
 

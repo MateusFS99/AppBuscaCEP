@@ -19,8 +19,8 @@ import java.util.List;
 public class ResultCep extends AppCompatActivity {
 
     private ListView lista;
+    private List<Endereco> list = new ArrayList<Endereco>();
     public static final String EXTRA_MESSAGE = "com.example.appbuscacep.MESSAGE";
-    private JSONArray jarray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +28,16 @@ public class ResultCep extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_cep);
 
-        lista = (ListView) findViewById(R.id.lista);
+        lista = (ListView)findViewById(R.id.lista);
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         String cidade = message.split(";")[0], estado = message.split(";")[1];
         String comp = "";
+
         try {
             comp = message.split(";")[2];
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -46,17 +46,17 @@ public class ResultCep extends AppCompatActivity {
         try {
 
             String js = task.execute("https://viacep.com.br/ws/" + estado + "/" + cidade + "/" + comp + "/json/").get();
-            jarray = new JSONArray(js);
             JSONObject el;
-            List<String> list = new ArrayList<String>();
+            JSONArray jarray = new JSONArray(js);
 
             for (int i = 0; i < jarray.length(); i++) {
 
                 el = new JSONObject(jarray.getString(i));
-                list.add(el.getString("cep"));
+                list.add(new Endereco(el.getString("cep"),el.getString("logradouro"),el.getString("complemento"),
+                        el.getString("bairro"),el.getString("localidade"),el.getString("uf"),el.getString("ddd")));
             }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+            EnderecoAdapter adapter = new EnderecoAdapter(this, R.layout.item_lista, list);
 
             lista.setAdapter(adapter);
             lista.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -73,23 +73,12 @@ public class ResultCep extends AppCompatActivity {
 
     public void onClick_List(int index) {
 
-        JSONObject job = null;
+        Endereco end = list.get(index);
+        String aoba = end.getCep() + "/" + end.getLogradouro() + "/" + end.getComplemento() + "/" + end.getBairro() +
+                "/" + end.getLocalidade() + "/" + end.getUf() + "/" + end.getDdd();
 
-        try {
-
-            job = new JSONObject(jarray.getString(index));
-            String aoba = job.getString("cep") +
-                    "/" + job.getString("logradouro") +
-                    "/" + job.getString("complemento") +
-                    "/" + job.getString("bairro") +
-                    "/" + job.getString("localidade") +
-                    "/" + job.getString("uf") +
-                    "/" + job.getString("ddd");
-            Intent intent = new Intent(this, DadosCep.class);
-            intent.putExtra(EXTRA_MESSAGE, aoba);
-            startActivity(intent);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        Intent intent = new Intent(this, DadosCep.class);
+        intent.putExtra(EXTRA_MESSAGE, aoba);
+        startActivity(intent);
     }
 }

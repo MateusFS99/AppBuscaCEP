@@ -48,7 +48,6 @@ public class DadosCep extends AppCompatActivity {
         String str = datarua.getText() + "," + datacomp.getText() + "," + datacid.getText() + "," + datauf.getText();
         Intent intent = new Intent(this, Mapa.class);
 
-
         intent.putExtra(EXTRA_MESSAGE, str);
         startActivity(intent);
     }
